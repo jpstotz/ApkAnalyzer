@@ -5,8 +5,12 @@ import androidx.annotation.WorkerThread
 import sk.styk.martin.apkanalyzer.model.detail.CertificateData
 import sk.styk.martin.apkanalyzer.util.DigestHelper
 import java.io.ByteArrayInputStream
+import java.security.PublicKey
 import java.security.cert.CertificateFactory
 import java.security.cert.X509Certificate
+import java.security.interfaces.DSAPublicKey
+import java.security.interfaces.ECPublicKey
+import java.security.interfaces.RSAPublicKey
 import java.util.regex.Pattern
 import javax.security.auth.x500.X500Principal
 import javax.security.auth.x500.X500Principal.RFC1779
@@ -24,8 +28,9 @@ class CertificateService {
 
             CertificateData(
                     signAlgorithm = certificate.sigAlgName,
-                    certificateHash = DigestHelper.md5Digest(certificate.encoded),
-                    publicKeyMd5 = DigestHelper.md5Digest(DigestHelper.byteToHexString(certificate.publicKey.encoded)),
+                    certificateHash = DigestHelper.sha1Digest(certificate.encoded),
+                    publicKeySha1 = DigestHelper.sha1Digest(DigestHelper.byteToHexString(certificate.publicKey.encoded)),
+                    publicKeyTypeBits = publicKeyTypeBits(certificate.publicKey),
                     startDate = certificate.notBefore,
                     endDate = certificate.notAfter,
                     serialNumber = certificate.serialNumber.toInt(),
@@ -75,6 +80,29 @@ class CertificateService {
         return if (matcher.find()) {
             matcher.group(1)
         } else null
+    }
+
+    private fun publicKeyTypeBits(publicKey: PublicKey): String? {
+        val result: String?
+        return if (publicKey is RSAPublicKey) {
+            String.format("RSA %d bits", publicKey.modulus.toString(2).length)
+        } else if (publicKey is ECPublicKey) {
+            val spec = publicKey.params
+            if (spec != null) {
+                String.format("EC %d bits", spec.order.bitLength())
+            } else {
+                null
+            }
+        } else if (publicKey is DSAPublicKey) {
+            val bits = if (publicKey.params != null) {
+                publicKey.params.p.bitLength();
+            } else {
+                publicKey.y.bitLength();
+            }
+            String.format("DSA %d bits", bits)
+        } else {
+            null
+        }
     }
 }
 

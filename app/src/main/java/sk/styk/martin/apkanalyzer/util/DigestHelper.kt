@@ -7,6 +7,18 @@ import java.util.*
 
 object DigestHelper {
 
+    fun sha1Digest(input: ByteArray): String {
+        val digest = getDigest("SHA-1")
+        digest.update(input)
+        return getHexString(digest.digest())
+    }
+
+    fun sha1Digest(input: String): String {
+        val digest = getDigest("SHA-1")
+        digest.update(input.toByteArray())
+        return getHexString(digest.digest())
+    }
+
     fun md5Digest(input: ByteArray): String {
         val digest = getDigest("Md5")
         digest.update(input)

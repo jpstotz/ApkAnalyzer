@@ -13,7 +13,7 @@ import sk.styk.martin.apkanalyzer.R
 import sk.styk.martin.apkanalyzer.ui.activity.dialog.SimpleTextDialog
 import sk.styk.martin.apkanalyzer.util.file.ClipBoardHelper
 
-class DetailItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
+open class DetailItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
     : LinearLayout(context, attrs, R.attr.detailItemViewStyle), View.OnClickListener, View.OnLongClickListener {
 
     var titleText: String = ""

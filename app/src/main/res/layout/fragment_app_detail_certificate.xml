@@ -53,23 +53,32 @@
                 app:titleText="@string/end_date"
                 app:valueText="@{DateUtils.formatDateTime(context, data.endDate.time, DateUtils.FORMAT_SHOW_DATE | DateUtils.FORMAT_NUMERIC_DATE | DateUtils.FORMAT_SHOW_TIME)}" />
 
-            <sk.styk.martin.apkanalyzer.ui.customview.DetailItemView
-                android:id="@+id/item_public_key_md5"
+            <sk.styk.martin.apkanalyzer.ui.customview.DetailCertHashItemView
+                android:id="@+id/item_cert_sha1"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/listPreferredItemHeight"
                 android:visibility="@{data == null ? View.GONE : View.VISIBLE}"
-                app:descriptionText="@string/public_key_md5_description"
-                app:titleText="@string/public_key_md5"
-                app:valueText="@{data.publicKeyMd5}" />
+                app:descriptionText="@string/cert_sha1_description"
+                app:titleText="@string/cert_sha1"
+                app:valueText="@{data.certificateHash}" />
 
             <sk.styk.martin.apkanalyzer.ui.customview.DetailItemView
-                android:id="@+id/item_cert_md5"
+                android:id="@+id/item_public_key_sha1"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/listPreferredItemHeight"
                 android:visibility="@{data == null ? View.GONE : View.VISIBLE}"
-                app:descriptionText="@string/cert_md5_description"
-                app:titleText="@string/cert_md5"
-                app:valueText="@{data.certificateHash}" />
+                app:descriptionText="@string/public_key_sha1_description"
+                app:titleText="@string/public_key_sha1"
+                app:valueText="@{data.publicKeySha1}" />
+
+            <sk.styk.martin.apkanalyzer.ui.customview.DetailItemView
+                android:id="@+id/item_public_key_type_bits"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeight"
+                android:visibility="@{data == null ? View.GONE : View.VISIBLE}"
+                app:descriptionText="@string/public_key_type_bits_description"
+                app:titleText="@string/public_key_type_bits"
+                app:valueText="@{data.publicKeyTypeBits}" />
 
             <sk.styk.martin.apkanalyzer.ui.customview.DetailItemView
                 android:id="@+id/item_serial_number"
