@@ -164,8 +164,9 @@
     <string name="sign_algorithm">Sign algorithm</string>
     <string name="start_date">Valid from</string>
     <string name="end_date">Valid to</string>
-    <string name="public_key_md5">Public key MD5</string>
-    <string name="cert_md5">Certificate MD5</string>
+    <string name="public_key_sha1">Public key SHA-1</string>
+    <string name="public_key_type_bits">Public key type and bit length</string>
+    <string name="cert_sha1">Certificate SHA-1</string>
     <string name="serial_number">Serial number</string>
     <string name="issuer_name">Issuer name</string>
     <string name="issuer_organization">Issuer organization</string>
@@ -177,8 +178,10 @@
     <string name="sign_algorithm_description">The signature algorithm name for the certificate signature algorithm. An example is the string \"SHA256withRSA\"</string>
     <string name="start_date_description">Start of validity period of the certificate.</string>
     <string name="end_date_description">End of validity period of the certificate.</string>
-    <string name="public_key_md5_description">MD5 hash of public key of the certificate.</string>
-    <string name="cert_md5_description">MD5 hash of the certificate.</string>
+    <string name="public_key_sha1_description">SHA-1 hash of public key of the certificate</string>
+    <string name="public_key_type_bits_description">Public key type and bit length</string>
+    <string name="cert_sha1_description">SHA-1 hash of the certificate the app was signed with</string>
+    <string name="cert_sha1_searchtext">Search for the certificate SHA-1 hash on...</string>
     <string name="serial_number_description">Serial Number value from the certificate. The serial number is an integer assigned by the certification authority to each certificate. It must be unique for each certificate issued by a given CA (i.e., the issuer name and serial number identify a unique certificate).</string>
     <string name="issuer_name_description">Name of issuer of the certificate</string>
     <string name="issuer_organization_description">Name of organization of issuer of the certificate</string>

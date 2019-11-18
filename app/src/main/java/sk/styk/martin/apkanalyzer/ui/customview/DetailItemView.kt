@@ -19,7 +19,7 @@ import sk.styk.martin.apkanalyzer.util.file.ClipBoardHelper
  * @author Martin Styk
  * @version 06.07.2017.
  */
-class DetailItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
+open class DetailItemView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null)
     : LinearLayout(context, attrs, R.attr.detailItemViewStyle), View.OnClickListener, View.OnLongClickListener {
 
     var titleText: String = ""

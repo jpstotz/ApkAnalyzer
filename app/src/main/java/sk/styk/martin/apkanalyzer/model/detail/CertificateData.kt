@@ -17,7 +17,8 @@ import java.util.*
 data class CertificateData(
         var signAlgorithm: String,
         var certificateHash: String,
-        var publicKeyMd5: String,
+        var publicKeySha1: String,
+        var publicKeyTypeBits: String?,
         var startDate: Date,
         var endDate: Date,
         var serialNumber: Int = 0,
